@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block body %}
+
+    <h1>Hello {{request.user}}</h1>
+    <a href="/logout">Signout</a>
+
+    <form method="post" action="/upload/" enctype="multipart/form-data">
+        {% csrf_token %}
+        upload your profile pic<br><input type="file" name="pic" accept="Image/*"><br>
+        <button type="submit">upload</button>
+    </form>
+
+    {% for p in img %}
+    <img src="/media/{{p.pic}}"><br>
+
+{% endfor %}
+
+
+{% endblock body %}
+
